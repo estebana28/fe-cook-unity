@@ -1,6 +1,5 @@
-
-export const PokemonPage = () => {
+export default function AllPokemonView() {
   return (
-    <div>PokemonPage</div>
+    <div>AllPokemonView</div>
   )
 }

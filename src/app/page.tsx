@@ -1,6 +1,5 @@
-
-export const HomePage = () => {
+export default function HomeView() {
   return (
-    <div>HomePage</div>
+    <div>HomeView</div>
   )
 }
