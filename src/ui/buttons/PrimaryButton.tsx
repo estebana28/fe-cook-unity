@@ -1,7 +1,19 @@
 import React from 'react'
 
-export const PrimaryButton = () => {
+type PrimaryButtonProps = {
+  text: string
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+}
+
+export const PrimaryButton = ({ text, onClick }: PrimaryButtonProps) => {
   return (
-    <div>PrimaryButton</div>
+    <>
+      <button
+        className="text-gray-100 rounded-3xl bg-darkPurple hover:bg-brightPurple px-4 py-2 shadow-md shadow-gray-500"
+        onClick={onClick}
+      >
+        {text}
+      </button>
+    </>
   )
 }
