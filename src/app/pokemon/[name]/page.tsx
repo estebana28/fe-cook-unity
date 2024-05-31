@@ -2,16 +2,16 @@ import { PokemonBattleView } from '@/views/PokemonBattleView'
 
 type PokemonInfoProps = {
   params: {
-    id: string
+    name: string
   }
 }
 
 export default function PokemonInfo({ params }: PokemonInfoProps) {
-  const pokemonId = parseInt(params.id)
+  const pokemonName = params.name
 
   return (
     <div>
-      <PokemonBattleView pokemonId={pokemonId} />
+      <PokemonBattleView pokemonName={pokemonName} />
     </div>
   )
 }

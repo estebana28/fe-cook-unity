@@ -1,23 +1,45 @@
 'use client'
 
+import { useState } from 'react'
 import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
+import { Pokemon } from '@/stores'
 import { BattleButton } from '@/ui'
 import { PokemonCardCUI } from '@/ui/cards/PokemonCardCUI'
-import { SelectCUI } from '@/ui/selects/SelectCUI'
 import Image from 'next/image'
+import { BattleModal } from '@/components/BattleModal'
+import { SelectWithImagesCUI } from '@/ui/selects/SelectWithImagesCUI'
 
 type PokemonBattleViewProps = {
-  pokemonId: number
+  pokemonName: string
 }
 
-export const PokemonBattleView = ({ pokemonId }: PokemonBattleViewProps) => {
+export const PokemonBattleView = ({ pokemonName }: PokemonBattleViewProps) => {
+  const [againstPokemon, setAgainstPokemon] = useState<Pokemon | undefined>()
+  const [openModal, setOpenModal] = useState<boolean>(false)
   const { pokemons, getPokemon } = usePokemonFacade()
-  const pokemon = getPokemon(pokemonId)
+  const pokemon = getPokemon(pokemonName)
+
+  const handleSelectPokemon = (name: string) => {
+    const pokemon = getPokemon(name)
+    if (pokemon && name === 'all') {
+      setAgainstPokemon(undefined)
+    } else {
+      setAgainstPokemon(pokemon)
+    }
+  }
+
+  const handleOpenModal = () => {
+    setOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
 
   return (
-    <div className="flex flex-col flex-start gap-4 items-center justify-center md:grid md:grid-cols-[1fr_auto_1fr] my-10">
+    <div className="flex flex-col flex-start gap-4 justify-center md:flex-row md:h-full md:pt-32">
       <PokemonCardCUI cardData={pokemon} />
-      <div className="flex flex-col items-center gap-12">
+      <div className="flex flex-col items-center gap-12 mt-12">
         <Image
           src="/versus.png"
           alt="versus image"
@@ -26,11 +48,20 @@ export const PokemonBattleView = ({ pokemonId }: PokemonBattleViewProps) => {
           priority
           className="w-full h-[150px]"
         />
-        <BattleButton />
+        <BattleButton onClickProp={() => handleOpenModal()} />
       </div>
       <div>
-        <SelectCUI options={pokemons} width={200} />
+        <div className={`${againstPokemon ? 'block m-06' : 'invisible'} mb-6`}>
+          <PokemonCardCUI cardData={againstPokemon} />
+        </div>
+        <SelectWithImagesCUI
+          options={pokemons}
+          width={200}
+          onChange={handleSelectPokemon}
+          placeholder="Choose your opponent"
+        />
       </div>
+      {openModal && <BattleModal onClose={handleCloseModal} />}
     </div>
   )
 }

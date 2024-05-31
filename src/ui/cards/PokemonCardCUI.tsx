@@ -21,7 +21,7 @@ export type PokemonCardCUIProps = {
 
 export const PokemonCardCUI = ({ cardData }: PokemonCardCUIProps) => {
   return (
-    <Link href={`/pokemon/${cardData?.id}`}>
+    <Link href={`/pokemon/${cardData?.name}`}>
       {cardData && (
         <div
           className={`border-2 border-gray-500 rounded-xl w-70 h-100 grid-rows-3 p-3 text-gray-500 shadow-md duration-100 ease-in hover:scale-100 hover:-translate-y-1 shadow-gray-100 ${

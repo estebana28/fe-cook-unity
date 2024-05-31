@@ -1,4 +1,4 @@
-import { get } from 'http'
+import { PokemonTypes } from '@/types/pokemon.types'
 import { create } from 'zustand'
 
 export type Type = [
@@ -40,19 +40,72 @@ export type Pokemon = {
 
 export type PokemonState = {
   pokemons: Pokemon[]
+  filteredPokemons: Pokemon[]
 }
 
 export type Actions = {
+  getPokemon: (name: string) => Pokemon | undefined
+  getPokemonsTypes: () => PokemonTypes[]
   setPokemons: (value: Pokemon[]) => void
-  getPokemon: (id: number) => Pokemon | undefined
+  filterPokemonsListByType: (type: string) => void
+  filterPokemonsListByName: (name: string) => void
+  filterPokemonsListByExpansion: (expansion: string) => void
 }
 
 export type PokemonStore = PokemonState & Actions
 
 export const usePokemonStore = create<PokemonStore>()((set, get) => ({
   pokemons: [],
+  filteredPokemons: [],
+  setPokemons: (value) => set({ pokemons: value, filteredPokemons: value }),
 
-  getPokemon: (id: number) =>
-    get().pokemons.find((pokemon) => pokemon.id === id),
-  setPokemons: (value) => set({ pokemons: value }),
+  getPokemon: (name: string) =>
+    get().pokemons.find((pokemon) => pokemon.name === name),
+
+  getPokemonsTypes: () => {
+    const pokemons = get().pokemons
+    const pokemonsTypes: PokemonTypes[] = pokemons?.map((pokemon) => ({
+      name: pokemon.type,
+      value: pokemon.type,
+    }))
+    return pokemonsTypes
+  },
+
+  filterPokemonsListByName: (name) => {
+    const pokemons = get().pokemons
+    console.log(pokemons, 'INSIDE FILTER NAME')
+
+    if (name === '') {
+      set({ pokemons })
+    }
+    set({
+      filteredPokemons: pokemons.filter((pokemon) =>
+        pokemon.name.includes(name),
+      ),
+    })
+  },
+
+  filterPokemonsListByType: (type) => {
+    const pokemons = get().pokemons
+    if (type === 'all') {
+      set({ pokemons })
+    }
+    set({
+      filteredPokemons: pokemons.filter((pokemon) =>
+        pokemon.type.includes(type),
+      ),
+    })
+  },
+
+  filterPokemonsListByExpansion: (expansion) => {
+    const pokemons = get().pokemons
+    if (expansion === '') {
+      set({ pokemons })
+    }
+    set({
+      filteredPokemons: pokemons.filter((pokemon) =>
+        pokemon.expansion.includes(expansion),
+      ),
+    })
+  },
 }))

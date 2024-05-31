@@ -10,11 +10,12 @@ type SetPokemonStateProps = {
 
 export const SetPokemonState = ({ pokemonsData }: SetPokemonStateProps) => {
   const { setPokemons } = usePokemonFacade()
+
   useEffect(() => {
     if (pokemonsData) {
       setPokemons(pokemonsData)
     }
-  }, [])
+  }, [pokemonsData, setPokemons])
 
   return <></>
 }

@@ -13,7 +13,7 @@ export const Navbar = () => {
     <div className="m-1 top-0 left-0 fixed">
       <IoMdArrowRoundBack
         onClick={handleGoBack}
-        className="text-4xl text-brightPurple"
+        className="text-4xl text-darkPurple hover:text-brightPurple"
       />
     </div>
   )

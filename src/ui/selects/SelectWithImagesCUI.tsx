@@ -1,61 +1,64 @@
-import React from 'react'
 import * as Select from '@radix-ui/react-select'
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from '@radix-ui/react-icons'
+import { FaAngleDown } from 'react-icons/fa'
 import { Pokemon } from '@/stores'
 import Image from 'next/image'
+import { capitalizeString } from '@/lib/auxiliary'
 
-type SelectCUIProps = {
+type SelectWithImagesCUIProps = {
+  placeholder: string
   options: Pokemon[]
   width?: number
+  onChange?: (name: string) => void | undefined
 }
 
-export const SelectCUI = ({ options, width }: SelectCUIProps) => {
+export const SelectWithImagesCUI = ({
+  placeholder,
+  options,
+  width,
+  onChange,
+}: SelectWithImagesCUIProps) => {
   return (
     <div className="h-8 bg-gray-300 rounded-md mx-2" style={{ width }}>
-      <Select.Root>
+      <Select.Root onValueChange={(value) => onChange && onChange(value)}>
         <Select.SelectGroup className="h-full">
           <Select.Trigger className="px-2 flex flex-row items-center justify-between w-full h-full">
             <Select.SelectValue
               className="text-gray-500"
-              placeholder="Pick a pokemon..."
+              placeholder={placeholder}
             />
             <Select.SelectIcon>
-              <ChevronDownIcon />
+              <FaAngleDown />
             </Select.SelectIcon>
           </Select.Trigger>
         </Select.SelectGroup>
         <Select.Portal>
           <Select.Content
             position="popper"
-            className="bg-gray-100 border-1 border-gray-500 rounded-b-md w-full"
+            className="bg-gray-100 border-1 border-gray-500 rounded-md w-full"
+            style={{ width }}
           >
-            <Select.SelectItem value="none" className="text-gray-500 w-full">
+            <Select.SelectItem value="all" className="text-gray-500 w-full">
               <Select.SelectItemText className="flex flex-row justify-center items-center w-full">
-                Pick a pokemon...
+                {placeholder}
               </Select.SelectItemText>
             </Select.SelectItem>
             {options.map((option) => (
               <Select.Item
                 key={option.id}
                 value={option.name}
-                className="text-gray-500 w-full"
+                className="text-gray-500"
               >
-                <Select.ItemText className="flex flex-row justify-center items-center w-full">
-                  <Image
-                    src={option.image}
-                    alt={option.name}
-                    width={25}
-                    height={25}
-                  />
-                  {option.name}
+                <Select.ItemText>
+                  <div className="flex flex-row justify-center items-center">
+                    {capitalizeString(option.name)}
+                    <Image
+                      src={option.image}
+                      alt={option.name}
+                      width={65}
+                      height={65}
+                    />
+                  </div>
                 </Select.ItemText>
-                <Select.ItemIndicator>
-                  <CheckIcon />
-                </Select.ItemIndicator>
               </Select.Item>
             ))}
             <Select.Separator className="bg-gray-500" />
