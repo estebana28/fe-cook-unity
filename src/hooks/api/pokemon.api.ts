@@ -22,3 +22,9 @@ export const getBattleResults = async (
   const data = await response.json()
   return data
 }
+
+export const getPokemonsWithMoficators = async (id: string) => {
+  const response = await fetch(`${API_URL}/pokemon/weak-and-resist/${id}`)
+  const data = await response.json()
+  return data
+}
