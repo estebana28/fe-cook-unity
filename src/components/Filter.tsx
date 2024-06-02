@@ -2,8 +2,9 @@
 
 import { SearchCUI } from '@/ui/inputs/SearchCUI'
 import { SelectStringCUI } from '@/ui/selects/SelectStringCUI'
-import { usePokemonStore } from '@/stores'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
+import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
+import { SpinnerCUI } from '@/ui/loaders/Spinner'
 
 export const Filter = () => {
   const {
@@ -11,7 +12,7 @@ export const Filter = () => {
     filterPokemonsListByExpansion,
     filterPokemonsListByType,
     getPokemonsTypes,
-  } = usePokemonStore()
+  } = usePokemonFacade()
   const [filterState, setFilterState] = useState({
     name: '',
     type: 'all',

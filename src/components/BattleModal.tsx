@@ -1,12 +1,15 @@
-import React from 'react'
+'use client'
+
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
+import { ShowResult } from './ShowResult'
 
 type BattleModalProps = {
   onClose: () => void
+  battleResult: string
 }
 
-export const BattleModal = ({ onClose }: BattleModalProps) => {
+export const BattleModal = ({ onClose, battleResult }: BattleModalProps) => {
   return (
     <Dialog.Root open>
       <Dialog.Trigger />
@@ -17,8 +20,7 @@ export const BattleModal = ({ onClose }: BattleModalProps) => {
             Battle results!!
           </Dialog.Title>
           <Dialog.Description className=" mt-12 mb-5 text-lg leading-normal text-center text-red-600 font-bold">
-            {/* {battleResult && battleResult} */}
-            placeholder
+            <ShowResult result={{ result: battleResult }} />
           </Dialog.Description>
           <Dialog.Close asChild>
             <button

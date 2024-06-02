@@ -41,12 +41,16 @@ export type Pokemon = {
 export type PokemonState = {
   pokemons: Pokemon[]
   filteredPokemons: Pokemon[]
+  contesterPokemon: Pokemon | null
+  againstPokemon: Pokemon | null
 }
 
 export type Actions = {
   getPokemon: (name: string) => Pokemon | undefined
   getPokemonsTypes: () => PokemonTypes[]
   setPokemons: (value: Pokemon[]) => void
+  setContesterPokemon: (value: Pokemon) => void
+  setAgainstPokemon: (value: Pokemon) => void
   filterPokemonsListByType: (type: string) => void
   filterPokemonsListByName: (name: string) => void
   filterPokemonsListByExpansion: (expansion: string) => void
@@ -57,6 +61,8 @@ export type PokemonStore = PokemonState & Actions
 export const usePokemonStore = create<PokemonStore>()((set, get) => ({
   pokemons: [],
   filteredPokemons: [],
+  contesterPokemon: null,
+  againstPokemon: null,
   setPokemons: (value) => set({ pokemons: value, filteredPokemons: value }),
 
   getPokemon: (name: string) =>
@@ -70,6 +76,10 @@ export const usePokemonStore = create<PokemonStore>()((set, get) => ({
     }))
     return pokemonsTypes
   },
+
+  setContesterPokemon: (value) => set({ contesterPokemon: value }),
+
+  setAgainstPokemon: (value) => set({ againstPokemon: value }),
 
   filterPokemonsListByName: (name) => {
     const pokemons = get().pokemons

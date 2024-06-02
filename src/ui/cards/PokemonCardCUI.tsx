@@ -1,16 +1,17 @@
+'use client'
+
 import { capitalizeString } from '@/lib/auxiliary'
 import { Pokemon } from '@/stores'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 const gradients: Record<string, string> = {
   ELECTRIC: 'bg-gradient-to-b from-yellow-300 to-yellow-100',
   FIRE: 'bg-gradient-to-b from-red-300 to-red-100',
-  NORMAL: 'bg-gradient-to-b from-gray-300 to-gray-100',
+  STEEL: 'bg-gradient-to-b from-gray-300 to-gray-100',
   GRASS: 'bg-gradient-to-b from-green-300 to-green-100',
   WATER: 'bg-gradient-to-b from-blue-300 to-blue-100',
-  ROCK: 'bg-gradient-to-b from-gray-300 to-gray-100',
+  FIGHTING: 'bg-gradient-to-b from-amber-400 to-gray-100',
   DARK: 'bg-gradient-to-b from-violet-300 to-violet-100',
   BUG: 'bg-gradient-to-b from-lime-300 to-lime-100',
 }
@@ -21,7 +22,7 @@ export type PokemonCardCUIProps = {
 
 export const PokemonCardCUI = ({ cardData }: PokemonCardCUIProps) => {
   return (
-    <Link href={`/pokemon/${cardData?.name}`}>
+    <Link href={`/pokemon/${cardData?.id}`}>
       {cardData && (
         <div
           className={`border-2 border-gray-500 rounded-xl w-70 h-100 grid-rows-3 p-3 text-gray-500 shadow-md duration-100 ease-in hover:scale-100 hover:-translate-y-1 shadow-gray-100 ${

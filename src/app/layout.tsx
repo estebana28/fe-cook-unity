@@ -22,7 +22,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className="h-full">
         <Theme className="bg-gradient-to-br from-gray-800 to-black">
-          <SetPokemonState pokemonsData={pokemons} />
+          {/* <SetPokemonState pokemonsData={pokemons} /> */}
           <Navbar />
           {children}
         </Theme>

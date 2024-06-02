@@ -1,3 +1,4 @@
+'use client'
 import * as Select from '@radix-ui/react-select'
 import { FaAngleDown } from 'react-icons/fa'
 import { capitalizeString } from '@/lib/auxiliary'
