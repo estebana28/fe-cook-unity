@@ -83,7 +83,6 @@ export const usePokemonStore = create<PokemonStore>()((set, get) => ({
 
   filterPokemonsListByName: (name) => {
     const pokemons = get().pokemons
-    console.log(pokemons, 'INSIDE FILTER NAME')
 
     if (name === '') {
       set({ pokemons })

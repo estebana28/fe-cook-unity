@@ -13,7 +13,5 @@ const battleResult: BattleResultTypes = {
 }
 
 export const ShowResult = ({ result }: ShowResultProps) => {
-  console.log(result)
-
   return <div>{result && battleResult[result.result]}</div>
 }

@@ -14,8 +14,8 @@ type PokemonBattleViewProps = {
   contesterPokemon: Pokemon
   pokemonsDB: Pokemon[]
   pokemonsWithModificators?: {
-    weakAgainst: Pokemon[][] | null
-    strongAgainst: Pokemon[][] | null
+    weakAgainst: Pokemon[] | null
+    resistantAgainst: Pokemon[] | null
   }
 }
 

@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import { notFound } from 'next/navigation'
 import type { Pokemon } from '@/stores'
 import {
   getAllPokemons,
@@ -19,7 +20,11 @@ export default async function PokemonInfo({ params }: PokemonInfoProps) {
   const contesterPokemon = await getPokemonById(pokemonId)
   const pokemonsDB: Pokemon[] = await getAllPokemons()
   const pokemonsWithModificators = await getPokemonsWithMoficators(pokemonId)
-  console.log(pokemonsWithModificators)
+  //console.log(pokemonsWithModificators, 'pokemonsWithModificators')
+
+  if (contesterPokemon.message === 'ERROR_FINDING_POKEMON') {
+    notFound()
+  }
 
   return (
     <>
