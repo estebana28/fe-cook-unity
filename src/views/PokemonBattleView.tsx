@@ -13,9 +13,9 @@ import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
 type PokemonBattleViewProps = {
   contesterPokemon: Pokemon
   pokemonsDB: Pokemon[]
-  pokemonsWithModificators?: {
-    weakAgainst: Pokemon[] | null
-    resistantAgainst: Pokemon[] | null
+  pokemonsWithModificators: {
+    weakAgainst: Pokemon[] | []
+    resistantAgainst: Pokemon[] | []
   }
 }
 
