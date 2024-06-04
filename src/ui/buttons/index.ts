@@ -1,5 +1,5 @@
-import { PrimaryButton } from './PrimaryButton';
-import { SecondaryButton } from './SecondaryButton';
-import { BattleButton } from './BattleButton';
+import { PrimaryButtonCUI } from './PrimaryButtonCUI'
+import { SecondaryButton } from './SecondaryButton'
+import { BattleButtonCUI } from './BattleButtonCUI'
 
-export { PrimaryButton, SecondaryButton, BattleButton }
+export { PrimaryButtonCUI, SecondaryButton, BattleButtonCUI }

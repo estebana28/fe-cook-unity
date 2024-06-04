@@ -2,20 +2,15 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import type { Pokemon } from '@/stores'
 import { BattleModal } from '@/components'
-import { BattleButton } from '@/ui'
+import { BattleButtonCUI } from '@/ui'
 import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
 import { getBattleResults } from '@/hooks/api/pokemon.api'
 
-type BattleActionProps = {
-  //disabledButton: boolean
-}
-
-export const BattleAction = ({}: BattleActionProps) => {
+export const BattleAction = () => {
   const { contesterPokemon, againstPokemon } = usePokemonFacade()
   const [openModal, setOpenModal] = useState<boolean>(false)
-  const [disableBattleButton, setDisableBattleButton] = useState(true)
+  const [disableBattleButtonCUI, setDisableBattleButtonCUI] = useState(true)
   const [battleResult, setBattleResult] = useState('')
 
   const handleOpenModal = () => {
@@ -43,26 +38,24 @@ export const BattleAction = ({}: BattleActionProps) => {
 
   useEffect(() => {
     if (againstPokemon) {
-      setDisableBattleButton(false)
+      setDisableBattleButtonCUI(false)
     }
   }, [againstPokemon])
 
   return (
-    <div>
-      <form onSubmit={handleBattleResultsSubmit}>
-        <Image
-          src="/versus.png"
-          alt="versus image"
-          width={200}
-          height={400}
-          priority
-          className="w-full h-[150px] mb-8"
-        />
-        <BattleButton disabled={disableBattleButton} />
-        {openModal && (
-          <BattleModal onClose={handleCloseModal} battleResult={battleResult} />
-        )}
-      </form>
-    </div>
+    <form onSubmit={handleBattleResultsSubmit} data-test-id="battle-form">
+      <Image
+        src="/versus.png"
+        alt="versus image"
+        width={200}
+        height={400}
+        priority
+        className="w-full h-[150px] mb-8"
+      />
+      <BattleButtonCUI disabled={disableBattleButtonCUI} />
+      {openModal && (
+        <BattleModal onClose={handleCloseModal} battleResult={battleResult} />
+      )}
+    </form>
   )
 }

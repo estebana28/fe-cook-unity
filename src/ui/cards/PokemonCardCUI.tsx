@@ -17,17 +17,18 @@ const gradients: Record<string, string> = {
 }
 
 export type PokemonCardCUIProps = {
-  cardData: Pokemon | undefined
+  cardData: Pokemon | null
 }
 
 export const PokemonCardCUI = ({ cardData }: PokemonCardCUIProps) => {
   return (
-    <Link href={`/pokemon/${cardData?.id}`}>
+    <Link href={`/pokemon/${cardData?.id}`} data-testid="pokemon-link">
       {cardData && (
         <div
           className={`border-2 border-gray-500 rounded-xl w-70 h-100 grid-rows-3 p-3 text-gray-500 shadow-md duration-100 ease-in hover:scale-100 hover:-translate-y-1 shadow-gray-100 ${
             gradients[cardData.type]
           }`}
+          data-testid="pokemon-card"
         >
           <div className="flex justify-between">
             <h1 className="font-bold">{capitalizeString(cardData.name)}</h1>
@@ -42,13 +43,13 @@ export const PokemonCardCUI = ({ cardData }: PokemonCardCUIProps) => {
               alt="pokemon"
               width={200}
               height={200}
-              priority
+              data-testid="pokemon-image"
             />
           </div>
           <div>
             <p className="font-semibold">
               Type:{' '}
-              <span className="font-normal">
+              <span className="font-normal" data-testid="pokemon-type">
                 {capitalizeString(cardData.type)}
               </span>
             </p>

@@ -2,9 +2,8 @@
 
 import { SearchCUI } from '@/ui/inputs/SearchCUI'
 import { SelectStringCUI } from '@/ui/selects/SelectStringCUI'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
-import { SpinnerCUI } from '@/ui/loaders/Spinner'
 
 export const Filter = () => {
   const {
@@ -51,6 +50,7 @@ export const Filter = () => {
           placeholder="Search by expansion"
           onChange={handleSearcByExpansionInput}
           value={filterState.expansion}
+          data-testid="search-expansion-input"
         />
         <SelectStringCUI
           placeholder="Filter by type"
