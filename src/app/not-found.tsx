@@ -1,4 +1,4 @@
-import { PrimaryButton } from '@/ui'
+import { PrimaryButtonCUI } from '@/ui'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -7,7 +7,7 @@ export default function NotFound() {
       <h2>Not Found</h2>
       <p>It looks like yo got lost</p>
       <Link href="/">
-        <PrimaryButton text="Return Home" />
+        <PrimaryButtonCUI text="Return Home" />
       </Link>
     </div>
   )

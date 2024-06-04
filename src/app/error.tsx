@@ -1,6 +1,6 @@
 'use client'
 
-import { PrimaryButton } from '@/ui'
+import { PrimaryButtonCUI } from '@/ui'
 import Link from 'next/link'
 
 export default function Error({
@@ -16,7 +16,7 @@ export default function Error({
         Oops! Something went wrong!
       </h2>
       <Link href="/">
-        <PrimaryButton
+        <PrimaryButtonCUI
           text="Return Home"
           onClick={
             // Attempt to recover by trying to re-render the invoices route

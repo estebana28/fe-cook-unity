@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PrimaryButton } from '@/ui'
+import { PrimaryButtonCUI } from '@/ui'
 import { MdCatchingPokemon } from 'react-icons/md'
 
 export default function NotFound() {
@@ -9,7 +9,7 @@ export default function NotFound() {
       <h2 className="text-xl font-semibold">404 Not Found</h2>
       <p>Could not find the requested pokemon.</p>
       <Link href="/pokemon">
-        <PrimaryButton text="Return to Pokemon list" />
+        <PrimaryButtonCUI text="Return to Pokemon list" />
       </Link>
     </main>
   )
