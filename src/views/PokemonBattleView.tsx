@@ -2,13 +2,13 @@
 
 import { useEffect } from 'react'
 import type { Pokemon } from '@/stores'
+import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
 import {
   ContesterPokemon,
   AgainstPokemon,
   BattleAction,
   PokemonsWithModificators,
 } from '@/components'
-import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
 
 type PokemonBattleViewProps = {
   contesterPokemon: Pokemon

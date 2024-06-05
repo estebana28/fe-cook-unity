@@ -20,7 +20,6 @@ export default async function PokemonInfo({ params }: PokemonInfoProps) {
   const contesterPokemon = await getPokemonById(pokemonId)
   const pokemonsDB: Pokemon[] = await getAllPokemons()
   const pokemonsWithModificators = await getPokemonsWithMoficators(pokemonId)
-  //console.log(pokemonsWithModificators, 'pokemonsWithModificators')
 
   if (contesterPokemon.message === 'ERROR_FINDING_POKEMON') {
     notFound()

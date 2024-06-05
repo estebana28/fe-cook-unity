@@ -1,7 +1,7 @@
 'use client'
 
 import type { Pokemon } from '@/stores'
-import { PokemonCardCUI } from '@/ui/cards/PokemonCardCUI'
+import { PokemonCardCUI } from '@/ui'
 
 type ContesterPokemonProps = {
   contesterPokemon: Pokemon

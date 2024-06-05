@@ -1,7 +1,5 @@
-//layout nextjs
-
 import type { Metadata } from 'next'
-import { Navbar } from '@/components/Navbar'
+import { Navbar } from '@/components'
 
 export const metadata: Metadata = {
   title: 'Pokemon List',

@@ -1,8 +1,7 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import userEvent from '@testing-library/user-event'
-import { Filter } from '@/components/Filter' // Ajusta la ruta según sea necesario
+import { Filter } from '@/components' // Ajusta la ruta según sea necesario
 import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
 
 // Definimos el tipo del hook usePokemonFacade

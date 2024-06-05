@@ -1,9 +1,8 @@
 'use client'
 
-import { SearchCUI } from '@/ui/inputs/SearchCUI'
-import { SelectStringCUI } from '@/ui/selects/SelectStringCUI'
 import { useState } from 'react'
 import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
+import { SearchCUI, SelectStringCUI } from '@/ui'
 
 export const Filter = () => {
   const {

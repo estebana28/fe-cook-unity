@@ -4,8 +4,8 @@ import './globals.css'
 import { Theme } from '@radix-ui/themes'
 
 export const metadata: Metadata = {
-  title: 'CookUnity Challenge',
-  description: 'CookUnity challenge by: Esteban Arce',
+  title: 'Coding Challenge',
+  description: 'Coding challenge by: Esteban Arce',
 }
 
 export default async function RootLayout({

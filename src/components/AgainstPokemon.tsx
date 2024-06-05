@@ -1,15 +1,9 @@
 'use client'
 
-import type { Pokemon } from '@/stores'
 import { usePokemonFacade } from '@/hooks/facade/usePokemonFacade'
 import { SelectWithImagesCUI, PokemonCardCUI } from '@/ui'
-import { useEffect } from 'react'
 
-type AgainstPokemonProps = {
-  //pokemonList: Pokemon[]
-}
-
-export const AgainstPokemon = ({}: AgainstPokemonProps) => {
+export const AgainstPokemon = () => {
   const { pokemons, getPokemon, setAgainstPokemon, againstPokemon } =
     usePokemonFacade()
 
